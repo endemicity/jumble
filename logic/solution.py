@@ -1,7 +1,7 @@
 import re
 
 from .exceptions import LettersValueError
-from .wordlist import get_words  # , get_letter_hashes
+from .wordlist import get_words, get_letter_hashes
 
 
 def answers(letters, words_file="test"):
@@ -11,15 +11,23 @@ def answers(letters, words_file="test"):
         return []
 
     words = get_words(words_file)
-    # has_letter_hashes = get_letter_hashes(words)
+    letter_hashes = get_letter_hashes(words)
 
-    answers = set()
-    # TODO: This code doesn't work at all
+    sets_to_intersect = []
     for letter in letters:
-        if letter in words:
-            answers.add(letter)
+        sets_to_intersect.append(letter_hashes[letter])
 
-    return list(answers)
+    first_set = sets_to_intersect.pop()
+    possible_words = list(first_set.intersection(*sets_to_intersect))
+
+    answers = []
+    for word in possible_words:
+        word_letters = list(set(word))
+        word_letters.sort()
+        if letters == word_letters:
+            answers.append(word)
+
+    return answers
 
 
 def validate_letters(letters):
@@ -36,8 +44,5 @@ def validate_letters(letters):
     if num_letters != num_unique_letters:
         raise LettersValueError("Duplicate letters in input")
 
+    unique_letters.sort()
     return unique_letters
-
-
-if __name__ == "__MAIN__":
-    print(answers("abc", words_file="wlist_match12"))

@@ -1,7 +1,7 @@
 import re
 
 from .exceptions import LettersValueError
-from .wordlist import get_words, get_letter_hashes
+from .wordlist import get_words  # , get_letter_hashes
 
 
 def answers(letters, words_file="test"):
@@ -11,9 +11,10 @@ def answers(letters, words_file="test"):
         return []
 
     words = get_words(words_file)
-    has_letter_hashes = get_letter_hashes(words)
+    # has_letter_hashes = get_letter_hashes(words)
 
     answers = set()
+    # TODO: This code doesn't work at all
     for letter in letters:
         if letter in words:
             answers.add(letter)

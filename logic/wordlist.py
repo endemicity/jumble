@@ -3,8 +3,20 @@ import re
 from pathlib import Path
 from string import ascii_lowercase
 
+from .exceptions import WordlistLookupError
+
+
+VALID_WORDLISTS = (
+    "test",
+    "wlist_match8",
+    "wlist_match12",
+)
+
 
 def get_words(words_file="test"):
+    if not words_file in VALID_WORDLISTS:
+        raise WordlistLookupError("Invalid wordlist")
+
     words_path = Path(__file__).parent.parent.absolute()
     words = set()
     raw_words = []
@@ -12,8 +24,8 @@ def get_words(words_file="test"):
         raw_words = f.readlines()
 
     for word in raw_words:
-        # if not re.match('[a-z]+', word):
-        #    continue
+        if not re.match("[a-z]+", word):
+            continue
         word = word.strip()
         word = word.lower()
         words.add(word)

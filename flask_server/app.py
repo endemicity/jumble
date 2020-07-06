@@ -19,7 +19,7 @@ def wordlist_letters_solution(wordlist, letters):
     except LettersValueError as e:
         app.logger.info("LettersValueError: {}".format(e))
         abort(404)
-    except Exception:
+    except Exception as e:
         app.logger.error("Exception: {}".format(e))
         abort(500)
 

@@ -14,7 +14,7 @@ VALID_WORDLISTS = (
 
 
 def get_words(words_file="test"):
-    if not words_file in VALID_WORDLISTS:
+    if words_file not in VALID_WORDLISTS:
         raise WordlistLookupError("Invalid wordlist")
 
     words_path = Path(__file__).parent.parent.absolute()

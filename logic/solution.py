@@ -40,4 +40,3 @@ def validate_letters(letters):
 
 if __name__ == "__MAIN__":
     print(answers("abc", words_file="wlist_match12"))
-

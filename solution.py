@@ -3,7 +3,7 @@ import re
 from .wordlist import get_words, get_letter_hashes
 
 
-def answers(letters, words_file="default"):
+def answers(letters, words_file="test"):
     letters = validate_letters(letters)
     num_letters = len(letters)
     if num_letters == 0:

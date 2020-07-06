@@ -1,6 +1,6 @@
 import pytest
 
-from ..wordlist import get_words, get_letter_hashes
+from ..logic.wordlist import get_words, get_letter_hashes
 
 
 def test_default_words():

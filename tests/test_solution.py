@@ -1,6 +1,6 @@
 import pytest
 
-from ..solution import answers
+from ..logic.solution import answers
 
 
 def test_no_letters():

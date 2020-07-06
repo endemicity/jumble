@@ -1,4 +1,3 @@
-from os import abort
 from flask import abort, Flask
 
 from ..logic.exceptions import WordlistLookupError, LettersValueError

@@ -5,7 +5,7 @@ from string import ascii_lowercase
 
 
 def get_words(words_file="test"):
-    words_path = Path(__file__).parent.absolute()
+    words_path = Path(__file__).parent.parent.absolute()
     words = set()
     raw_words = []
     with open("{}/words/{}.txt".format(words_path, words_file)) as f:

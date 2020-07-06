@@ -20,6 +20,7 @@ def wordlist_letters_solution(wordlist, letters):
         app.logger.info("LettersValueError: {}".format(e))
         abort(404)
     except Exception:
+        app.logger.error("Exception: {}".format(e))
         abort(500)
 
     return {

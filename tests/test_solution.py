@@ -26,8 +26,12 @@ def test_non_alpha():
 
 
 def test_valid_two_letters():
-    assert answers("ab") == ["a"]
+    assert answers("an") == ["an"]
 
 
 def test_invalid_two_letters():
     assert answers("bc") == []
+
+
+def test_valid_three_letters():
+    assert answers("abc") == ["cab"]

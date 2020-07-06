@@ -4,7 +4,7 @@ from ..logic.wordlist import get_words, get_letter_hashes
 
 
 def test_default_words():
-    assert get_words() == set(["a", "cab", "zoo"])
+    assert get_words() == set(["a", "an", "cab", "zoo"])
 
 
 def test_letter_hashes():

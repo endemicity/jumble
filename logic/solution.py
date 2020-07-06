@@ -1,5 +1,6 @@
 import re
 
+from .exceptions import LettersValueError
 from .wordlist import get_words, get_letter_hashes
 
 
@@ -27,12 +28,12 @@ def validate_letters(letters):
 
     letters = letters.lower()
     if not re.match("[a-z]+", letters):
-        raise ValueError("Letters besides a-z in input")
+        raise LettersValueError("Letters besides a-z in input")
 
     unique_letters = list(set(letters))
     num_unique_letters = len(unique_letters)
     if num_letters != num_unique_letters:
-        raise ValueError("Duplicate letters in input")
+        raise LettersValueError("Duplicate letters in input")
 
     return unique_letters
 

@@ -1,37 +1,41 @@
 import pytest
 
-from ..logic.solution import answers
+from ..logic.solution import solve_pangram
 
 
 def test_no_letters():
-    assert answers("") == []
+    assert solve_pangram("") == []
 
 
 def test_valid_one_letter():
-    assert answers("a") == ["a"]
+    assert solve_pangram("a") == ["a"]
 
 
 def test_invalid_one_letter():
-    assert answers("b") == []
+    assert solve_pangram("b") == []
 
 
 def test_duplicate_letters():
     with pytest.raises(ValueError):
-        answers("aa")
+        solve_pangram("aa")
 
 
 def test_non_alpha():
     with pytest.raises(ValueError):
-        answers("-")
+        solve_pangram("-")
 
 
 def test_valid_two_letters():
-    assert answers("an") == ["an"]
+    assert solve_pangram("an") == ["an"]
 
 
 def test_invalid_two_letters():
-    assert answers("bc") == []
+    assert solve_pangram("bc") == []
 
 
 def test_valid_three_letters():
-    assert answers("abc") == ["cab"]
+    assert solve_pangram("abc") == ["cab"]
+
+
+def test_repeated_three_letters():
+    assert solve_pangram("bot") == ["bot", "boot"]

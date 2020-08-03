@@ -1,17 +1,17 @@
 from flask import abort, Flask
 
 from ..logic.exceptions import WordlistLookupError, LettersValueError
-from ..logic.solution import answers
+from ..logic.solution import solve_pangram
 
 
 app = Flask(__name__)
 
 
-@app.route("/api/<wordlist>/<letters>/", methods=["GET"])
+@app.route("/api/pangram/<wordlist>/<letters>/", methods=["GET"])
 def wordlist_letters_solution(wordlist, letters):
 
     try:
-        solution = answers(letters, wordlist)
+        solution = solve_pangram(letters, wordlist)
     except WordlistLookupError as e:
         app.logger.info("WordlistLookupError: {}".format(e))
         abort(404)
@@ -23,5 +23,5 @@ def wordlist_letters_solution(wordlist, letters):
         abort(500)
 
     return {
-        "solution": solution,
+        "pangrams": solution,
     }

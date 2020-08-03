@@ -38,4 +38,4 @@ def test_valid_three_letters():
 
 
 def test_repeated_three_letters():
-    assert solve_pangram("bot") == ["bot", "boot"]
+    assert solve_pangram("bot") == ["boot", "bot"]
